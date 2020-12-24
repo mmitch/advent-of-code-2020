@@ -44,6 +44,12 @@ sub all_bus_lines_depart_sequentially_starting_at($timestamp) {
 	    return FALSE;
 	}
 	if ($bus_line ne DONT_CARE) {
+	    ## POSSIBLE BUG:
+	    # I think this only works by chance on the real data.
+	    #
+	    # A proper way would be integer factorization of $skip and
+	    # $bus_line and looking for their least common multiple
+	    # instead of a simple multiplication.
 	    $skip *= $bus_line;
 	}
     }
